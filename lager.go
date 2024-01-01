@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lexkong/log/lager"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 	"gopkg.in/yaml.v2"
 )
 
@@ -32,7 +32,7 @@ type Lager struct {
 	LogBackupCount int    `yaml:"log_backup_count"`
 }
 
-//PassLagerCfg is the struct for lager information(passlager.yaml)
+// PassLagerCfg is the struct for lager information(passlager.yaml)
 type PassLagerCfg struct {
 	Writers        string `yaml:"writers"`
 	LoggerLevel    string `yaml:"logger_level"`

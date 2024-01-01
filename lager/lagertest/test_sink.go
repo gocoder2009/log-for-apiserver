@@ -8,7 +8,7 @@ import (
 	"github.com/onsi/ginkgo"
 	"github.com/onsi/gomega/gbytes"
 
-	"github.com/lexkong/lager"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
 type TestLogger struct {
@@ -26,7 +26,7 @@ func NewTestLogger(component string) *TestLogger {
 
 	testSink := NewTestSink()
 	logger.RegisterSink(testSink)
-	logger.RegisterSink(lager.NewWriterSink(ginkgo.GinkgoWriter, lager.DEBUG))
+	logger.RegisterSink(lager.NewWriterSink("ginkgo-test-sink", ginkgo.GinkgoWriter, lager.DEBUG))
 
 	return &TestLogger{logger, testSink}
 }
@@ -35,7 +35,7 @@ func NewTestSink() *TestSink {
 	buffer := gbytes.NewBuffer()
 
 	return &TestSink{
-		Sink:   lager.NewWriterSink(buffer, lager.DEBUG),
+		Sink:   lager.NewWriterSink("test-sink", buffer, lager.DEBUG),
 		buffer: buffer,
 	}
 }

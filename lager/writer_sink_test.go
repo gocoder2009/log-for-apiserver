@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/lexkong/lager"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -22,7 +22,7 @@ var _ = Describe("WriterSink", func() {
 
 	BeforeEach(func() {
 		writer = NewCopyWriter()
-		sink = lager.NewWriterSink(writer, lager.INFO)
+		sink = lager.NewWriterSink("writer-sink", writer, lager.INFO)
 	})
 
 	Context("when logging above the minimum log level", func() {

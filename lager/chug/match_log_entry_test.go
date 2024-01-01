@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/lexkong/lager/chug"
+	"github.com/gocoder2009/log-for-apiserver/lager/chug"
 	"github.com/onsi/gomega/format"
 	"github.com/onsi/gomega/types"
 )

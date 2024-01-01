@@ -9,17 +9,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lexkong/lager"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
-//Entry is a struct
+// Entry is a struct
 type Entry struct {
 	IsLager bool
 	Raw     []byte
 	Log     LogEntry
 }
 
-//LogEntry is a struct
+// LogEntry is a struct
 type LogEntry struct {
 	Timestamp time.Time
 	LogLevel  lager.LogLevel

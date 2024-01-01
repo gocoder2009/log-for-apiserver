@@ -5,7 +5,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/lexkong/log/lager/color"
+	"github.com/gocoder2009/log-for-apiserver/lager/color"
 )
 
 const logBufferSize = 1024
@@ -24,7 +24,7 @@ type writerSink struct {
 	writeL      *sync.Mutex
 }
 
-//NewWriterSink is function which returns new struct object
+// NewWriterSink is function which returns new struct object
 func NewWriterSink(name string, writer io.Writer, minLogLevel LogLevel) Sink {
 	return &writerSink{
 		writer:      writer,

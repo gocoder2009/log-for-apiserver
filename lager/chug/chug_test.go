@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/lexkong/lager"
-	. "github.com/lexkong/lager/chug"
+	"github.com/gocoder2009/log-for-apiserver/lager"
+	. "github.com/gocoder2009/log-for-apiserver/lager/chug"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -23,7 +23,7 @@ var _ = Describe("Chug", func() {
 	BeforeEach(func() {
 		pipeReader, pipeWriter = io.Pipe()
 		logger = lager.NewLogger("chug-test")
-		logger.RegisterSink(lager.NewWriterSink(pipeWriter, lager.DEBUG))
+		logger.RegisterSink(lager.NewWriterSink("chug-test-sink", pipeWriter, lager.DEBUG))
 		stream = make(chan Entry, 100)
 		go Chug(pipeReader, stream)
 	})

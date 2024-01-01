@@ -21,8 +21,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
+	"github.com/gocoder2009/log-for-apiserver"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
 func main() {

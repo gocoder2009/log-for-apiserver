@@ -1,8 +1,8 @@
 package lager_test
 
 import (
-	"github.com/lexkong/lager"
-	"github.com/lexkong/lager/lagertest"
+	"github.com/gocoder2009/log-for-apiserver/lager"
+	"github.com/gocoder2009/log-for-apiserver/lager/lagertest"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

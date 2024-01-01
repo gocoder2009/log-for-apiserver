@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-//LogLevel is a user defined variable of type int
+// LogLevel is a user defined variable of type int
 type LogLevel int
 
 const (
@@ -16,7 +16,7 @@ const (
 	FATAL
 )
 
-//FormatLogLevel is a function which returns string format of log level
+// FormatLogLevel is a function which returns string format of log level
 func FormatLogLevel(x LogLevel) string {
 	var level string
 	switch x {
@@ -34,26 +34,27 @@ func FormatLogLevel(x LogLevel) string {
 	return level
 }
 
-//MarshalJSON is a function which returns data in JSON format
+// MarshalJSON is a function which returns data in JSON format
 func (x LogLevel) MarshalJSON() ([]byte, error) {
 	// var level string
 	var level = FormatLogLevel(x)
 	return json.Marshal(level)
 }
 
-//Data is a map
+// Data is a map
 type Data map[string]interface{}
 
-//LogFormat is a struct which stores details about log
+// LogFormat is a struct which stores details about log
 type LogFormat struct {
 	LogLevel  LogLevel `json:"level"`
 	Timestamp string   `json:"timestamp"`
 	File      string   `json:"file"`
 	Message   string   `json:"msg"`
 	Data      Data     `json:"data,omitempty"`
+	Source    string   `json:"source"`
 }
 
-//ToJSON which converts data of log file in to JSON file
+// ToJSON which converts data of log file in to JSON file
 func (log LogFormat) ToJSON() ([]byte, error) {
 	return json.Marshal(log)
 }

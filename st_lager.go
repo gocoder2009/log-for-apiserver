@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/lexkong/log/lager"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
 const (
@@ -20,7 +20,7 @@ const (
 	FATAL = "FATAL"
 )
 
-//Config is a struct which stores details for maintaining logs
+// Config is a struct which stores details for maintaining logs
 type Config struct {
 	LoggerLevel    string
 	LoggerFile     string
@@ -35,17 +35,17 @@ type Config struct {
 var config = DefaultConfig()
 var m sync.RWMutex
 
-//Writers is a map
+// Writers is a map
 var Writers = make(map[string]io.Writer)
 
-//RegisterWriter is used to register a io writer
+// RegisterWriter is used to register a io writer
 func RegisterWriter(name string, writer io.Writer) {
 	m.Lock()
 	Writers[name] = writer
 	m.Unlock()
 }
 
-//DefaultConfig is a function which retuns config object with default configuration
+// DefaultConfig is a function which retuns config object with default configuration
 func DefaultConfig() *Config {
 	return &Config{
 		LoggerLevel:    INFO,
@@ -57,7 +57,7 @@ func DefaultConfig() *Config {
 	}
 }
 
-//Init is a function which initializes all config struct variables
+// Init is a function which initializes all config struct variables
 func LagerInit(c Config) {
 	if c.LoggerLevel != "" {
 		config.LoggerLevel = c.LoggerLevel
@@ -106,12 +106,12 @@ func LagerInit(c Config) {
 	}
 }
 
-//NewLogger is a function
+// NewLogger is a function
 func NewLogger(component string) lager.Logger {
 	return NewLoggerExt(component, component)
 }
 
-//NewLoggerExt is a function which is used to write new logs
+// NewLoggerExt is a function which is used to write new logs
 func NewLoggerExt(component string, appGUID string) lager.Logger {
 	var lagerLogLevel lager.LogLevel
 	switch strings.ToUpper(config.LoggerLevel) {
