@@ -45,6 +45,8 @@ func (sink *writerSink) Log(level LogLevel, log []byte) {
 			log = bytes.Replace(log, []byte("ERROR"), color.ErrorByte, -1)
 		} else if bytes.Contains(log, []byte("FATAL")) {
 			log = bytes.Replace(log, []byte("FATAL"), color.FatalByte, -1)
+		} else if bytes.Contains(log, []byte("INFO")) {
+			log = bytes.Replace(log, []byte("INFO"), color.InfoByte, -1)
 		} else if bytes.Contains(log, []byte("DEBUG")) {
 			log = bytes.Replace(log, []byte("DEBUG"), color.DebugByte, -1)
 		}
